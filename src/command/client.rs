@@ -8,13 +8,11 @@ pub struct Client {
     #[clap(short, long)]
     pub upstream: Option<String>,
 
-    /// Set value
-    #[clap(short, long)]
-    pub set: Option<String>,
+    /// Key
+    pub key: String,
 
-    /// Del value
-    #[clap(short, long)]
-    pub del: Option<String>,
+    /// Value
+    pub value: Option<String>,
 }
 
 impl Client {
