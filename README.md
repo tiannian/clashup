@@ -126,3 +126,10 @@ Add rules
 ```shell
 $ clashup rules --add <set> --type <ip> [192.168.0.0/24]
 ```
+
+Sets:
+
+- Reject
+- Direct
+- Proxy
+
