@@ -20,4 +20,3 @@ impl Client {
         Ok(())
     }
 }
-

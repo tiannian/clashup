@@ -1,30 +1,27 @@
 use clap::Args;
 
-use crate::{utils, Result};
+use crate::{utils::{self, default_dir}, Result};
 
 #[derive(Args, Debug)]
 pub struct Daemon {
-    /// Config dir's url
-    #[clap(short, long)]
-    pub config_dir: Option<String>,
-
     /// subscription url
     #[clap(short, long)]
     pub sub_url: Option<String>,
 }
 
 impl Daemon {
-    pub async fn execute(&mut self) -> Result<()> {
+    pub async fn execute(&mut self, config_dir: Option<&str>) -> Result<()> {
         if let Some(url) = &self.sub_url {
-            let config = if let Some(cd) = &self.config_dir {
-                Some(format!("{}/config.yaml", cd))
-            } else {
-                None
-            };
-            utils::update_config(config.as_deref(), url).await?;
+            utils::update_config(config_dir, url).await?;
         }
 
-        utils::start_clash(self.config_dir.as_deref()).await?;
+        let config_dir = if let Some(d) = config_dir {
+            String::from(d)
+        } else {
+            default_dir()
+        };
+
+        utils::start_clash(&config_dir).await?;
 
         Ok(())
     }

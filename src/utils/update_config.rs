@@ -6,7 +6,7 @@ use super::default_dir;
 
 pub async fn update_config(config: Option<&str>, url: &str) -> Result<()> {
     let config = if let Some(s) = config {
-        String::from(s)
+        format!("{}/config.yaml", s)
     } else {
         format!("{}/config.yaml", default_dir())
     };
