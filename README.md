@@ -69,7 +69,7 @@ Manage subscriptions. update, add new or install systemd unit.
 - `--update-all`: Update all subscription.
 - `--list-subscription`: List all subscriptions.
 
-### client
+### cli
 
 A command line client for clash.
 
@@ -79,4 +79,50 @@ A command line client for clash.
 
 Display a real-time log.
 
+#### config
 
+Display and set basic config.
+
+Display all config and version.
+
+```shell
+$ clash cli config
+```
+
+Set mode. role, global or direct. Or other config item.
+
+- `--rule`: Rule mode.
+- `--global`: Global mode.
+- `--direct`: Direct mode.
+- `--http-port <number>`: Set http proxy port.
+- `--socks5-port <number>`: Set proxy5 proxy port.
+
+#### proxies
+
+Check proxies and select proxy.
+
+Display all proxies.
+
+```shell
+$ clashup proxies
+```
+
+These is flags and arguments.
+
+- `--show-delay`: Show delay on all proxies.
+- `--select <index>`: Select a proxies.
+- `<index>`: Show special index of proxy.
+
+#### Rules
+
+Display all rules
+
+```shell
+$ clashup rules
+```
+
+Add rules
+
+```shell
+$ clashup rules --add <set> --type <ip> [192.168.0.0/24]
+```
