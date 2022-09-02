@@ -1,6 +1,9 @@
 use clap::Args;
 
-use crate::{utils::{self, default_dir}, Result};
+use crate::{
+    utils::{self, default_dir},
+    Result,
+};
 
 #[derive(Args, Debug)]
 pub struct Daemon {

@@ -1,10 +1,15 @@
-use std::{path::Path, fs::{File, Permissions}, io::copy, os::unix::prelude::PermissionsExt};
+use std::{
+    fs::{File, Permissions},
+    io::copy,
+    os::unix::prelude::PermissionsExt,
+    path::Path,
+};
 
 use crate::Result;
 
 use flate2::read::GzDecoder;
-use tokio::io::AsyncWriteExt;
 use futures_util::StreamExt;
+use tokio::io::AsyncWriteExt;
 
 pub fn ungzip(from: &str, to: &str) -> Result<()> {
     let file = File::open(from)?;
@@ -17,9 +22,7 @@ pub fn ungzip(from: &str, to: &str) -> Result<()> {
     Ok(())
 }
 
-
 pub async fn download_clash(clash_url: &str, tar_path: &str, target: &str) -> Result<()> {
-
     println!("{}", clash_url);
     println!("{}", tar_path);
     println!("{}", target);

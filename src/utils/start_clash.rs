@@ -5,7 +5,6 @@ use tokio::process::Command;
 use crate::{Error, Result};
 
 pub async fn start_clash(dir: &str) -> Result<()> {
-
     let p = format!("{}/clash", dir);
 
     if Path::new(&p).exists() {

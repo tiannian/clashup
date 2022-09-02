@@ -1,6 +1,9 @@
 use clap::Args;
 
-use crate::{Result, utils::{default_dir, download_clash}};
+use crate::{
+    utils::{default_dir, download_clash},
+    Result,
+};
 
 #[derive(Args, Debug)]
 pub struct Init {
@@ -25,7 +28,6 @@ impl Init {
             default_dir()
         };
 
-
         let clash_binary_path = if let Some(p) = &self.clash_release_url {
             p.clone()
         } else {
@@ -40,14 +42,14 @@ impl Init {
             let clash_url = if let Some(ru) = &self.clash_release_url {
                 ru.clone()
             } else {
-                String::from("https://release.dreamacro.workers.dev/latest/clash-linux-amd64-v3-latest.gz")
+                String::from(
+                    "https://release.dreamacro.workers.dev/latest/clash-linux-amd64-v3-latest.gz",
+                )
             };
 
             download_clash(&clash_url, &tar_path, &clash_binary_path).await?;
         }
 
-
         Ok(())
     }
 }
-
