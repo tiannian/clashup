@@ -40,7 +40,7 @@ $ clashup config https://example.com?token=0xxxx&flag=clash
 Inital clash config. This command will do these step:
 
 1. download and unpack clash
-2. create clash config based on `clashup mode`
+2. create clash config based on `mode`
 3. download Country.mmdb
 4. download controller panel
 
